@@ -5,6 +5,8 @@ import cv2 as cv
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 from tkinter.filedialog import asksaveasfilename
+import os
+import readdata
 
 customtkinter.set_appearance_mode("light")  # sets the color of the background
 customtkinter.set_default_color_theme("green")
@@ -24,7 +26,8 @@ calc_bool = False
 display_bool = False
 total = 0
 meterlevel = 0
-
+dataset=readdata.getdata()
+print(dataset)
 
 def updatemeter():
     global total
@@ -133,13 +136,41 @@ def showcalculate():
 
 
 def captureimage():
-    cam = cv.VideoCapture(0)   
-    result, image = cam.read() 
-    if result: 
-        cv.imwrite("Captured.png", image)
-    else: 
-        print("No image detected. Please! try again") 
-    analysis()
+    cam = cv.VideoCapture(0)
+
+    if not cam.isOpened():
+        print("Camera not accessible")
+        return
+
+    while True:
+        # Show the live video stream in a window
+        ret, frame = cam.read()
+        if not ret:
+            print("Failed to grab frame")
+            break
+        
+        cv.imshow('Press the spacebar to take a photo', frame)
+
+        # Wait for a key press for 1 millisecond
+        key = cv.waitKey(1)
+
+        if key == ord('q'):  # Press 'q' to quit the program
+            print("Exiting...")
+            break
+        elif key == 32:  
+            # Save the image to a file
+            filename = "Captured.png"
+            # Get the current working directory where the file should be saved
+            cwd = os.getcwd()
+            taken_filepath = os.path.join(cwd, filename)
+            cv.imwrite(taken_filepath, frame)  # This line saves the image
+            print(f"Image saved at {taken_filepath}")
+            cv.destroyWindow('Press the spacebar to take a photo')
+            return (taken_filepath)
+    
+    # Release the camera resource
+    cam.release()
+    cv.destroyWindow('Press the spacebar to take a photo')
 
 
 def uploadimage():
