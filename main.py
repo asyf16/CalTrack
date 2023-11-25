@@ -6,7 +6,7 @@ from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 from tkinter.filedialog import asksaveasfilename
 
-customtkinter.set_appearance_mode("dark")  # sets the color of the background
+customtkinter.set_appearance_mode("light")  # sets the color of the background
 customtkinter.set_default_color_theme("green")
 root = customtkinter.CTk()  # create the root window
 root.title("CalTrack")  # names the window
@@ -22,13 +22,38 @@ BMR = 0
 home_bool = True
 calc_bool = False
 display_bool = False
+total = 0
+meterlevel = 0
+
+
+def updatemeter():
+    global total
+    global meterlevel
+    colors = "#635323"
+    if BMR!=0:
+        meterlevel = total/BMR
+    else:
+        meterlevel=0
+    if meterlevel>1:
+        meterlevel=1
+        colors="#7B2D29"
+    total = 1500
+    totalstring = str(total)+"/"+str(BMR)
+    inside = customtkinter.CTkButton(display, height=550, width=250,border_color=("#35422E","#DEECFE"),border_width=4,corner_radius=0,text="", state="disabled",fg_color="transparent")
+    meter = customtkinter.CTkButton(display, height=meterlevel*550, width=250,border_color=("#35422E","#DEECFE"),border_width=4,corner_radius=0,text="", state="disabled")
+    trackedcal = customtkinter.CTkLabel(display, font=("Cordel",37),text_color=(colors,"#8ea3bf"), text=totalstring, fg_color="transparent")
+    inside.place(relx=0.2,rely=0.83,anchor='s')
+    meter.place(relx=0.2,rely=0.83,anchor='s')
+    trackedcal.place(relx=0.2,rely=0.9,anchor='s')
+
+
 
 def switch_event():  # function to control the switch
     global dark
-    if switch_var.get() == "on":  # if the switch is turned on
+    if switch_var.get() == "off":  # if the switch is turned on
         customtkinter.set_appearance_mode("dark")  # changes the appearance mode to dark
         dark = True
-    if switch_var.get() == "off":  # if the switch is turned off
+    if switch_var.get() == "on":  # if the switch is turned off
         customtkinter.set_appearance_mode("light")  # changes the appearance mode to light
         dark = False
 
@@ -91,6 +116,7 @@ def showdisplay():
     home.place_forget()
     calculate.place_forget()
     closeinfo()
+    updatemeter()
     
 
 def showcalculate():
@@ -147,19 +173,19 @@ def getBMR():
         tall=int(170)
 
     if sex=="Female":
-        BMR = 655.1 + (9.563 * heavy) + (1.850 * tall) - (4.676 *old)
+        BMR = 447.6 + (9.25 * heavy) + (3.10 * tall) - (4.33 *old)
     if sex=="Male":
-        BMR = 66.47 + (13.75 * heavy) + (5.003  * tall) - (6.755 *old)
+        BMR = 88.4 + (13.4 * heavy) + (4.8 * tall) - (5.68 *old)
     if active == "Sedentary":
         BMR = BMR*1.2
     if active == "Moderate":
-        BMR = BMR*1.55
+        BMR = BMR*1.375
     if active == "Active":
-        BMR = BMR*1.725
+        BMR = BMR*1.55
+    BMR=int(BMR)
     textbmr = "You are recommended to consume " + str(round(BMR,0)) + " calories daily."
     displaybmr = customtkinter.CTkLabel(calculate, text=textbmr, text_color=("#796C47","#8ea3bf"), font=bold_font, justify='left')
     displaybmr.place(relx=0.5, rely=0.75, anchor=CENTER)
-    print(BMR)
 
 #setup
 my_font = customtkinter.CTkFont(family="Corbel", size=25)
@@ -178,20 +204,20 @@ calc_button.place(relx=0.695, rely=0.25)
 
 #info button
 info_button = customtkinter.CTkButton(root, width = 30, height = 40, corner_radius=100, text = "i", font=info_font, border_spacing= 0, command=showinfo)
-tabview = customtkinter.CTkTabview(master=root, width=400, height = 180, fg_color=("#D4C9A8","#436791"))
+tabview = customtkinter.CTkTabview(master=root, width=400, height = 180, fg_color=("#D4C9A8","#2d4a6e"), border_width=0)
 info_button.place(relx=0.95, rely=0.95, anchor=CENTER)  # places the switch
 
 #light switch
 switch_var = customtkinter.StringVar(value="on")  # creates the value of the switch
-dark_switch = customtkinter.CTkSwitch(master=root, switch_width=50, switch_height=30, text="Light", text_color=("#635323","#8ea3bf"), font=("Corbel", 25), command=switch_event, variable=switch_var, onvalue="on", offvalue="off")  # initializes the switch
+dark_switch = customtkinter.CTkSwitch(master=root, switch_width=50, switch_height=30, text="Dark", text_color=("#635323","#8ea3bf"), font=("Corbel", 25), command=switch_event, variable=switch_var, onvalue="on", offvalue="off")  # initializes the switch
 dark_switch.place(relx=0.1, rely=0.95, anchor=CENTER)  # places the switch
 
 #home area
-my_image = customtkinter.CTkImage(light_image=Image.open("C:/Users/Aurora/Tracker/Images/title.png"),size=(850, 230))
+my_image = customtkinter.CTkImage(light_image=Image.open("Images/title1.png"),dark_image=Image.open("Images/title2.png"),size=(850, 250))
 image_label = customtkinter.CTkLabel(home, image=my_image, text="")
-image_label.place(relx=0.5, rely=0.33, anchor=CENTER)
-upload_button = customtkinter.CTkButton(home, width = 180, height = 60, corner_radius=100, text = "Upload",text_color="#635323", font=my_font, command=uploadimage, fg_color="#D4C9A8",hover_color="#c9bb91")
-photo_button = customtkinter.CTkButton(home, width = 180, height = 60, corner_radius=100, text = "Capture", text_color="#635323", font=my_font, command=captureimage, fg_color="#D4C9A8",hover_color="#c9bb91" )
+image_label.place(relx=0.5, rely=0.31, anchor=CENTER)
+upload_button = customtkinter.CTkButton(home, width = 180, height = 60, corner_radius=100, text = "Upload",text_color=("#635323","#8ea3bf"), font=my_font, command=uploadimage, fg_color=("#D4C9A8","#436791"),hover_color=("#c9bb91","#36567d"))
+photo_button = customtkinter.CTkButton(home, width = 180, height = 60, corner_radius=100, text = "Capture", text_color=("#635323","#8ea3bf"), font=my_font, command=captureimage, fg_color=("#D4C9A8","#436791"),hover_color=("#c9bb91","#36567d") )
 upload_button.place(relx=0.5, rely=0.55, anchor=CENTER)
 photo_button.place(relx=0.5, rely=0.65, anchor=CENTER)
 
@@ -203,7 +229,7 @@ weight = customtkinter.CTkEntry(calculate, placeholder_text="60", height = 45, w
 height = customtkinter.CTkEntry(calculate, placeholder_text="170", height = 45, width = 240, font=my_font)
 gender = customtkinter.CTkOptionMenu(calculate, values=["Female", "Male"], command=getgender, height = 45, width = 240, font=my_font)
 activity = customtkinter.CTkOptionMenu(calculate, values=["Sedentary", "Moderate", "Active"], command=getactivity, height = 45, width = 240, font=my_font)
-calc_button = customtkinter.CTkButton(calculate, width = 240, height = 60, corner_radius=100, text = "Calculate",text_color="#4c5e42", font=my_font, command=getBMR, fg_color="#a8bd9d",hover_color="#92ab85")
+calc_button = customtkinter.CTkButton(calculate, width = 240, height = 60, corner_radius=100, text = "Calculate",text_color=("#4c5e42","#8ea3bf"), font=my_font, command=getBMR, fg_color=("#a8bd9d","#436791"),hover_color=("#92ab85","#36567d"))
 Labels.place(relx=0.17,rely=0.50,anchor=CENTER)
 Labels2.place(relx=0.57,rely=0.435,anchor=CENTER)
 gender.place(relx=0.37, rely=0.40, anchor=CENTER)
@@ -212,9 +238,16 @@ weight.place(relx=0.37, rely=0.60, anchor=CENTER)
 height.place(relx=0.77, rely=0.40, anchor=CENTER)
 activity.place(relx=0.77, rely=0.50, anchor=CENTER)
 calc_button.place(relx=0.77, rely=0.61, anchor=CENTER)
-calc_img = customtkinter.CTkImage(light_image=Image.open("C:/Users/Aurora/Tracker/Images/calculate.png"),size=(900, 125))
+calc_img = customtkinter.CTkImage(light_image=Image.open("Images/calc1.png"),dark_image=Image.open("Images/calc2.png"),size=(900, 165))
 calc_label = customtkinter.CTkLabel(calculate, image=calc_img, text="")
-calc_label.place(relx=0.5, rely=0.25, anchor=CENTER)
+calc_label.place(relx=0.5, rely=0.23, anchor=CENTER)
 
+#display area
+display_img = customtkinter.CTkImage(light_image=Image.open("Images/track1.png"),dark_image=Image.open("Images/track2.png"),size=(550, 290))
+display_label = customtkinter.CTkLabel(display, image=display_img, text="")
+textbox = customtkinter.CTkTextbox(display,text_color=("#635323","#8ea3bf"), border_width=5,border_color=("#B6A77A","#8ea3bf"),border_spacing=6, height = 375, width=650, font=("Corbel", 30), state="disabled")
+textbox.place(relx=0.65,rely=0.6, anchor=CENTER)
+display_label.place(relx=0.6, rely=0.23, anchor=CENTER)
+updatemeter()
 
 root.mainloop()
