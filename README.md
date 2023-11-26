@@ -1,5 +1,7 @@
 ![Aurora Shi Daniel Jiang Garvit Jain](https://github.com/asyf16/CalTrack/assets/144833617/5a9d4391-e857-449f-82d7-8748b5d9213c)
 
+Demo: https://youtu.be/YQx1uoPEPR8
+
 # 💡 Inspiration ✨
 
 Embarking on our CalTrack adventure, we were fueled by a vision to revolutionize the way individuals approach their health. We aimed to dismantle the tedious barriers of traditional calorie counting, transforming it from a burdensome task into a delightful, almost effortless daily interaction. It’s where advanced tech seamlessly blends with the essential aspects of nutrition, condensed into the simple act of capturing a photo. We embraced the philosophy that pursuing a wholesome lifestyle should be convenient, straightforward, and completely devoid of stress.
@@ -11,6 +13,8 @@ CalTrack emerged as our innovative response to this vision—the ultimate tool t
 Enter the world of CalTrack, where sophisticated computer vision meets artificial intelligence to create a seamless meal identification experience. Forget the cumbersome process of scouring through endless food lists to painstakingly log every bite. No more dealing with complex user interfaces, searching through databases, and manual logging. With CalTrack, you’re one photo away from a comprehensive nutritional breakdown in an instant. It’s like having a personal dietitian in your pocket, always ready to help you make smarter food choices with ease and precision.
 
 Additionally, we used the Revised Harris-Benedict Equation to give users an estimate of their suggested daily calories, factoring in their sex, height, weight, and age. This makes the application more personalized and tailored to the user.
+
+![IMG_7196](https://github.com/asyf16/CalTrack/assets/144833617/e21d54c7-2570-494e-b955-75a8f95dbb82)
 
 # 🛠️ How we built it 💬
 
@@ -26,6 +30,8 @@ On the front end, we use Python with the CustomTktinter library to create a simp
 One of our earliest and most significant hurdles was defining the scope of the AI to handle a diversity of meals. This was the reason we used the Vision API from Google Cloud to process our images. Given the timeframe of this project, we had to limit our ability to easily identifiable food. 
 
 We also worked hard to optimize the app and API calls for speed, as we understand that every second counts when you're hungry. Balancing accuracy with speed was a delicate process that our team navigated with perseverance and creativity.
+
+<img width="716" alt="Screenshot 2023-11-26 094524" src="https://github.com/asyf16/CalTrack/assets/144833617/d224ebf2-4362-4f40-8be1-cbb92bb04dba">
 
 # 🎉 Accomplishments that we're proud of 🏆
 
