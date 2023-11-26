@@ -1,3 +1,5 @@
+Devpost: https://devpost.com/software/caltrack-xjzb6k
+
 # 💡 Inspiration ✨
 
 Embarking on our CalTrack adventure, we were fueled by a vision to revolutionize the way individuals approach their health. We aimed to dismantle the tedious barriers of traditional calorie counting, transforming it from a burdensome task into a delightful, almost effortless daily interaction. It’s where advanced tech seamlessly blends with the essential aspects of nutrition, condensed into the simple act of capturing a photo. We embraced the philosophy that pursuing a wholesome lifestyle should be convenient, straightforward, and completely devoid of stress.
