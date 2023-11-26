@@ -1,4 +1,4 @@
-Devpost: https://devpost.com/software/caltrack-xjzb6k
+![Aurora Shi Daniel Jiang Garvit Jain](https://github.com/asyf16/CalTrack/assets/144833617/5a9d4391-e857-449f-82d7-8748b5d9213c)
 
 # 💡 Inspiration ✨
 
@@ -18,6 +18,9 @@ By integrating Google Cloud, we aimed to take the guesswork out of calorie count
 
 On the front end, we use Python with the CustomTktinter library to create a simple and intuitive user interface. Our features include allowing users to upload or capture photos to be processed, calculating the calories they need in a day, and tracking everything a user eats in a day with a clear bar to represent their calorie goal.
 
+<img width="791" alt="Screenshot_2023-11-26_at_1 43 00_AM" src="https://github.com/asyf16/CalTrack/assets/144833617/b2b45aea-6aac-4472-87c4-2f79985be687">
+
+
 # 🚧 Challenges we ran into ⛔
 
 One of our earliest and most significant hurdles was defining the scope of the AI to handle a diversity of meals. This was the reason we used the Vision API from Google Cloud to process our images. Given the timeframe of this project, we had to limit our ability to easily identifiable food. 
@@ -28,12 +31,18 @@ We also worked hard to optimize the app and API calls for speed, as we understan
 
 Being a brand-new team to hackathons, we are incredibly proud of what we have achieved in 36 hours. Our journey led us from the intricacies of building a sleek, user-friendly front-end interface with Python's Tkinter to architecting a robust backend powered by the sophistication of the Google Cloud Platform. The culmination of this effort is CalTrack—an integration of technologies that not only embraces but excels at transforming images into actionable nutritional insights.
 
+![ezgif com-video-to-gif (1)](https://github.com/asyf16/CalTrack/assets/144833617/e17efe6c-cb58-4dca-bfdc-826ad952fa07)
+
 # 🧠 What we learned 🤓
 
 Building CalTrack has been a rigorous educational experience, packed with valuable lessons at every stage. We ventured into the complex territories of machine learning and user interface design, greatly enhancing our technical skill set. Taking on the Google Cloud Platform, we went from novices to proficient users, tapping into the power of its Vision API, which now serves as the backbone of our app. The learning process was challenging, but we embraced the opportunity to grow and improve, much like adventurers enjoy the ascent and the perspective it brings.
+
+![ezgif com-video-to-gif](https://github.com/asyf16/CalTrack/assets/144833617/291f23f7-f5b5-4508-9a39-1ce65c21a9c6)
 
 # 🔮 What's next for CalTrack ⏭️
 
 The road ahead for CalTrack includes expanding our food database to cover even more variety, implementing user-friendly features like meal suggestions, and enhancing our AI to provide even more precise nutritional information. 
 
 We're on a mission to make healthy eating hassle-free for everyone, and this is just the beginning.
+
+Devpost: https://devpost.com/software/caltrack-xjzb6k
