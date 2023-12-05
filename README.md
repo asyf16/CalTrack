@@ -1,6 +1,7 @@
 ![Aurora Shi Daniel Jiang Garvit Jain](https://github.com/asyf16/CalTrack/assets/144833617/5a9d4391-e857-449f-82d7-8748b5d9213c)
 
 Demo: https://youtu.be/YQx1uoPEPR8
+Submitted to Hack Western 10
 
 # 💡 Inspiration ✨
 
